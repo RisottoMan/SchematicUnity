@@ -47,12 +47,12 @@ namespace SchematicUnity
             if (File.Exists(path))
             {
                 var json = JsonConvert.DeserializeObject<Schematic>(File.ReadAllText(path));
-                LoadFromJson(json, Model);
+                LoadFromJson(json, Model, Model.GameObject.transform);
                 Log.Info($"File {path} found!");
             }
             else Log.Info($"File {path} not found!");
         }
-        public void LoadFromJson(Schematic json, Model Model)
+        public void LoadFromJson(Schematic json, Model Model, Transform transform)
         {
             foreach (var prim in json.Primitives)
             {
@@ -70,15 +70,7 @@ namespace SchematicUnity
             {
                 Model.AddPart(new ModelWorkStation(Model, JsonVector(work.Position), JsonVector(work.Rotation), JsonVector(work.Scale)));
             }
-            /*
-            foreach (var child in json.Childrens)
-            {
-                LoadFromJson(json, Model);
-            }*/
         }
-        public Vector3 JsonVector(Vector vector)
-        {
-            return new Vector3() { x = vector.x, y = vector.y, z = vector.z };
-        }
+        public Vector3 JsonVector(Vector vector) => new Vector3() { x = vector.x, y = vector.y, z = vector.z };
     }
 }

@@ -8,10 +8,10 @@ namespace SchematicUnity
 {
     public class Schematic
     {
-        public List<PrimitiveObject> Primitives { get; set; } = new List<PrimitiveObject>();
-        public List<Lights> LightSources { get; set; } = new List<Lights>();
-        public List<Item> Items { get; set; } = new List<Item>();
-        public List<Workstation> WorkStations { get; set; } = new List<Workstation>();
-        public List<Schematic> Childrens { get; set; } = new List<Schematic>();
+        public List<PrimitiveObject> Primitives { get; set; }
+        public List<Lights> LightSources { get; set; }
+        public List<Item> Items { get; set; }
+        public List<Workstation> WorkStations { get; set; }
+        public List<Schematic> Childrens { get; set; }
     }
 }
