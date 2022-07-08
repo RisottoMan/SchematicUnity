@@ -39,7 +39,7 @@ namespace SchematicUnity
                 }
             }
         }
-        public void Load(string path, Vector3 pos, out Model model)
+        public static void Load(string path, Vector3 pos, out Model model)
         {
             var Model = new Model(path, pos);
             model = Model;
@@ -52,7 +52,7 @@ namespace SchematicUnity
             }
             else Log.Info($"File {path} not found!");
         }
-        public void LoadFromJson(Schematic json, Model Model, Transform transform)
+        public static void LoadFromJson(Schematic json, Model Model, Transform transform)
         {
             foreach (var prim in json.Primitives)
             {
@@ -71,6 +71,6 @@ namespace SchematicUnity
                 Model.AddPart(new ModelWorkStation(Model, JsonVector(work.Position), JsonVector(work.Rotation), JsonVector(work.Scale)));
             }
         }
-        public Vector3 JsonVector(Vector vector) => new Vector3() { x = vector.x, y = vector.y, z = vector.z };
+        public static Vector3 JsonVector(Vector vector) => new Vector3() { x = vector.x, y = vector.y, z = vector.z };
     }
 }
